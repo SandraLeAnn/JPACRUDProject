@@ -79,7 +79,7 @@ Each type of action that the user would like to do, whether is is Create, Read, 
 
 ## What I Learned
 <p>
-I solidified my understanding of jpql and mysql database. This project helped clarify the path that a program takes for the front to the back and back to the front using api method calls and specific implementation logic to process the request coming from the front end. I noticed I need to work on understanding html tags, implementing css styling and how information to actually be displayed. I decided not to jump into styling with this project do to complications with project setup and css.  
+I solidified my understanding of jpql and mysql database. This project helped clarify the path that a program takes from the front to the back and back to the front using api method calls and specific implementation logic to process the request coming from the front end. I noticed I need to work on understanding html tags, implementing css styling and how information is actually displayed. I decided not to jump into styling with this project do to complications with project setup and lack of styling knowledge.  
 </p>
 
 
