@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Create Fishing Spot</title>
 </head>
 <body>
+<h1>Create </h1>
 <form action="createSpot.do" method="POST">
 
 
@@ -28,15 +29,17 @@
   
   <label for="fish">Types of Fish:</label><br>
   
-  <input type="text" id="fish" name="fish">
+  <input type="text" id="fish" name="fish"><br>
   
   <label for="imgURL">Add Image:</label><br>
   
-  <input type="text" id="imgURL" name="imgURL" placeholder="Image URL"><br>
-
-	  
+  <input type="text" id="imgURL" name="imgURL"><br><br>
  <input type="submit">
 
 </form>
+<br>
+<form action="home.do" method="get">
+ <button type="submit">Home</button>
+ 
 </body>
 </html>

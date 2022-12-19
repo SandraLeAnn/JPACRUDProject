@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    TAG<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,10 @@
 <title>UpdateSpot</title>
 </head>
 <body>
-<h1>hello!</h1>
+<h1>Update Fishing Spot</h1>
 
 
-<p>Update your spot that has an id of: ${spot.id}</p>
+<p>Fishing ID: ${spot.id}</p>
 
 
 
@@ -38,15 +38,20 @@
   
   <label for="fish">Types of Fish:</label><br>
   
-  <input type="text" id="fish" name="fish">
+  <input type="text" id="fish" name="fish"><br>
   
   <label for="imgURL">Add Image:</label><br>
   
-  <input type="text" id="imgURL" name="imgURL" placeholder="Image URL"><br>
+  <input type="text" id="imgURL" name="imgURL"><br><br>
 
 	  
  <input type="submit">
 
 </form>
+<br>
+<form action="home.do" method="get">
+
+ <button type="submit">Home</button>
+ 
 </body>
 </html>

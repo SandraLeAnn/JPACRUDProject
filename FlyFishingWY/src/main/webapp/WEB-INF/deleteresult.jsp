@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Delete</title>
 </head>
 <body>
-<h1>Spot Created</h1>
-<form action="home.do" method="get">
+<h1>Successfully Deleted</h1>
+ 
+ <form action="home.do" method="get">
  <button type="submit">Home</button>
+  
+
 </body>
 </html>

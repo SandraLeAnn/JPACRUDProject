@@ -1,5 +1,7 @@
 package com.skilldistillery.flyfishingwyoming.contollers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +29,11 @@ public class SpotController {
 		System.out.println("inside go to create form call");
 		return "createform";
 	}
-	@RequestMapping(path = {"goToUpdate.do"})
-	public String goToUpdate() {
-		return "updateSpot";
-	}
+	
+	
+	
+	
+	
 //	@GetMapping(path= { "getSpots.do"})
 //	public ModelAndView getAll() throws SQLException {
 //		System.out.println("were inside controller method");
@@ -42,23 +45,34 @@ public class SpotController {
 //
 //		return mv; 
 //	}
+//	@GetMapping("searchSpot.do")
+//	public ModelAndView getSpotKeyword(String keyword) {
+//		System.out.println(keyword + "inside controller");
+//		ModelAndView mv = new ModelAndView();
+//		List<Spot> spt = dao.findSpotByKeyword(keyword);
+//		mv.addObject("spot", spt);
+//		mv.setViewName("spot");
+//		return mv;
+//		
+//	}
 	
-	
-	@GetMapping("getSpot.do")
+	@GetMapping("getSpotPage.do")
 	public ModelAndView getSpotById(int id) {
+	System.err.println("inside" + id);
 		ModelAndView mv = new ModelAndView();
 		Spot s = dao.FindById(id);
 		mv.addObject("spot", s);
-		mv.setViewName("home");
+		mv.setViewName("spot");
 		return mv;
 	}
 	@PostMapping("createSpot.do")
 	public ModelAndView createSpot(Spot spot) {
 		ModelAndView mv = new ModelAndView();
-		dao.create(spot);
+		Spot newSpot = dao.create(spot);
+		mv.addObject("Spot", newSpot);
 		mv.setViewName("createresult");
 		return mv;
-	}
+	} 
 	
 	
 	@GetMapping("updateInProgresss.do")
@@ -74,7 +88,6 @@ public class SpotController {
 	}
 	@PostMapping("updateSpot.do")
 	public ModelAndView updatedSpot(Integer id, Spot spot) {
-		
 		System.out.println("inside post request");
 		System.out.println("Id" + id);
 		System.out.println("Spot" + spot);
@@ -85,30 +98,40 @@ public class SpotController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@PostMapping("deleteSpot.do")
+		public ModelAndView deleteInProgress(int id) {
+		System.err.println(id);
+			ModelAndView mv = new ModelAndView();
+			dao.deleteSpot(id);
+			mv.setViewName("deleteresult");
+			return mv;
+			
+		}
 	
 	
 	
 	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 
 

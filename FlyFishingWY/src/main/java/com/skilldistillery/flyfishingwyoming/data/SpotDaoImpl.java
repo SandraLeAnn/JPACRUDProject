@@ -1,5 +1,7 @@
 package com.skilldistillery.flyfishingwyoming.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -17,19 +19,6 @@ public class SpotDaoImpl implements SpotDAO {
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAFlyFishingWyoming");
 	private EntityManager em = emf.createEntityManager();
 
-//	@Override
-//	public List<Spot> findAllSpots() throws SQLException {
-//		
-//		List<Spot> spots = null;
-//		System.out.println("inside impl");
-//
-//		String jpql = "Select s From Spot s";
-//		
-//		spots = em.createQuery(jpql, Spot.class).getResultList();
-//		
-//		return spots;
-//	}
-
 	@Override
 	public Spot FindById(int id) {
 		return em.find(Spot.class, id);
@@ -40,11 +29,19 @@ public class SpotDaoImpl implements SpotDAO {
 //
 //		System.out.println(spot);
 	}
-//@Override
-//public List<Spot> findSpotByKeyword(String keyword) {
-//	// TODO Auto-generated method stub
-//	return null;
-//}
+
+//	@Override
+//	public List<Spot> findSpotByKeyword(String keyword) {
+//		System.out.println(keyword);
+//		String jpql = "SELECT s FROM Spot s WHERE name LIKE :keyword OR description LIKE :keyword";
+//		
+//		List<Spot> searchList = em.createQuery(jpql, Spot.class)
+//				.setParameter("keyword", ("%" + keyword + "%"))
+//				.getResultList();
+//		
+//		System.out.println(searchList);
+//		return searchList;
+//	}
 
 	@Override
 	public Spot create(Spot spot) {
@@ -57,12 +54,10 @@ public class SpotDaoImpl implements SpotDAO {
 
 	@Override
 	public Spot updateSpot(int id, Spot spot) {
-		
-		System.out.println(spot);
-		System.out.println(id);
-		
+
+
 		em.getTransaction().begin();
-		
+
 		Spot managedSpot = em.find(Spot.class, id);
 
 		managedSpot.setName(spot.getName());
@@ -71,25 +66,38 @@ public class SpotDaoImpl implements SpotDAO {
 		managedSpot.setWaterType(spot.getWaterType());
 		managedSpot.setFish(spot.getFish());
 		managedSpot.setImageURL(spot.getImageURL());
-		
+
 		em.flush();
 		em.getTransaction().commit();
 		return managedSpot;
 	}
 
-//
-//
-//@Override
-//public Spot deleteSpot(Spot spot) {
-//	Spot spt = em.find(Spot.class, 1);
-//	em.getTransaction().begin();
-//
-//	em.remove(spt); 
-//
-//	em.getTransaction().commit();
-//
-//	spt.getName();
-//	
-//	return null;
-//}
+	@Override
+	public boolean deleteSpot(int id) {
+		em.getTransaction().begin();
+		// create a boolean to track if the object has been deleted or not
+		boolean isSpotDeleted = false;
+
+		// find the spot object by id in order to delete it
+		Spot spt = em.find(Spot.class, id);
+
+		// if the object isnt null then move forward with deleting
+		if (spt != null) {
+			// remove the spot from the entity manager(stack)
+			em.remove(spt);
+			em.flush();
+
+			// if the enitity manager no longer contains the object in question ...
+			if (!em.contains(spt)) {
+				// then set the boolean to true as it was deleted successfully
+				isSpotDeleted = true;
+
+			}
+		}
+
+		// else if it is null, does not exist do nothing and return false
+		em.getTransaction().commit();
+		return isSpotDeleted;
+
+	}
 }

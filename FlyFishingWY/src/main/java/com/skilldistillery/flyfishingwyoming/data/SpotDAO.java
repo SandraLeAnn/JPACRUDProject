@@ -1,5 +1,7 @@
 package com.skilldistillery.flyfishingwyoming.data;
 
+import java.util.List;
+
 import com.skilldistillery.jpaflyfishingwyoming.entities.Spot;
 
 public interface SpotDAO {
@@ -11,6 +13,6 @@ public interface SpotDAO {
 //	public List<Spot> findSpotByKeyword(String keyword);
 	public Spot create(Spot spot);
 	public Spot updateSpot(int id, Spot spot);
-//	public Spot deleteSpot(Spot spot);
+	public boolean deleteSpot( int id);
 	
 }
