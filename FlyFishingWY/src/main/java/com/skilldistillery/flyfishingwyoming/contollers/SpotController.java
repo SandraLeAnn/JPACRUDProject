@@ -60,7 +60,7 @@ public class SpotController {
 	public ModelAndView getSpotById(int id) {
 	System.err.println("inside" + id);
 		ModelAndView mv = new ModelAndView();
-		Spot s = dao.FindById(id);
+		Spot s = dao.findById(id);
 		mv.addObject("spot", s);
 		mv.setViewName("spot");
 		return mv;
@@ -79,7 +79,7 @@ public class SpotController {
 	public ModelAndView updateInProg(Integer id) {
 		System.out.println(id);
 		ModelAndView mv = new ModelAndView();
-		Spot spt = dao.FindById(id);
+		Spot spt = dao.findById(id);
 		
 
 		mv.addObject("spot", spt);

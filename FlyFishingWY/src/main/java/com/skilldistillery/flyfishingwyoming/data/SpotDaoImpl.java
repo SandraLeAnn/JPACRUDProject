@@ -20,7 +20,7 @@ public class SpotDaoImpl implements SpotDAO {
 	private EntityManager em = emf.createEntityManager();
 
 	@Override
-	public Spot FindById(int id) {
+	public Spot findById(int id) {
 		return em.find(Spot.class, id);
 //		String jpql = "SELECT s FROM Spot s WHERE s.id = :id";
 //		System.out.println(id);
